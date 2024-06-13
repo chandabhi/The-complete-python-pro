@@ -15,15 +15,12 @@ while checkLen > 0 :
     if len(UserInput ) > 1:
        UserInput  = input("Enter only single letter : ")
     
-    # if pick_word.find(UserInput):
-    #     newWord.
-    
+       
     if UserInput in pick_word :
         loc = pick_word.index(UserInput)
         pick_word[loc]="_"
         if UserInput not in newWord[loc]:
-        # newWord.replace(loc,UserInput)
-            newWord[loc]=UserInput
+                    newWord[loc]=UserInput
     elif UserInput not in pick_word :
         print("Not in list you missed another chance")
     print(newWord)
