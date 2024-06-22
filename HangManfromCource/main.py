@@ -46,7 +46,6 @@ while not end_of_game:
     if "_" not in display:
         end_of_game = True
         print("You win.")
-
     #TODO-2: - Import the stages from hangman_art.py and make this error go away.
     from hangman_art import stages
     print(stages[lives])
