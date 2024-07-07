@@ -23,7 +23,6 @@ def clear():
     tim.penup()
     tim.home()
     tim.pendown()
-
 screen.listen()
 screen.onkey(move_forwards, "Up")
 screen.onkey(move_backwards, "Down")
