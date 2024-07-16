@@ -18,9 +18,14 @@ class RuleBot:
   )
 
   def __init__(self):
-    self.allienabble = {'describe_planet_intent':r'.*\s* your planet.*',
-                         'answer_why_intent':r'why\sare.*',
-                         'about_intellipat':r'.*\s*intellipet'
+    self.allienabble = {
+                         'describe_planet_intent': r'.*\s* your planet.*',
+                         'answer_why_intent': r'why\sare.*',
+                         'about_intellipat': r'.*\s*intellipaat',
+                         'about_session': r'.*\s*session'
+                        # 'describe_planet_intent': r'.*\s+your\s+planet.*',
+                        # 'answer_why_intent': r'why\s+are.*',
+                        # 'about_intellipat': r'.*\s+intellipaat.*'
                         }
   def greet(self):
     self.name = input("What is your name?\n")
@@ -43,13 +48,17 @@ class RuleBot:
     for key , value in self.allienabble.items():
       intent = key
       regex_pattern = value
-      found_match = re.match(regex_pattern,reply)
+      #below comented code need to be checked
+      #found_match = re.match(regex_pattern,reply)
+      found_match = re.search(reply,regex_pattern)
       if found_match and intent == 'describe_planet_intent':
         return self.describe_planet_intent()
       elif found_match and intent == 'answer_why_intent':
         return self.answer_why_intent()
       elif found_match and intent == 'about_intellipat':
         return self.about_intellipat()
+      elif found_match and intent == 'about_session':
+        return self.about_session()
     if not found_match:
       return self.no_match_intent()
 
@@ -68,6 +77,11 @@ class RuleBot:
                   "intellipaat will make you learn concepts in tha way never ",
                   "Intellipat is where you carrer ad skill grows\n")
     return random.choice(responses)
+  
+  def about_session(self):
+    responses = ('Session is on 14th Aug 2022\n','session was cool!!')
+    return random.choice(responses)
+  
   def no_match_intent(self):
     responses = (
         "Please tell me more. \n", "Tell me more!\n", "I see. Can you elaborate?\n",
